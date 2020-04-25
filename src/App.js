@@ -15,7 +15,7 @@ export class App extends Component {
       .get('https://api.adviceslip.com/advice')
       .then((res) => {
         const { advice } = res.data.slip;
-        console.log(advice);
+        this.setState({ advice });
       })
       .catch((err) => {
         console.log(err);
@@ -23,9 +23,12 @@ export class App extends Component {
   };
 
   render() {
+    const { advice } = this.state;
     return (
-      <div>
-        <h1>Hello</h1>
+      <div className='app'>
+        <div className='card'>
+          <h1 className='heading'>{advice}</h1>
+        </div>
       </div>
     );
   }
